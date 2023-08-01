@@ -1,25 +1,30 @@
 import Link from "next/link"
 import React, { useState } from "react"
 import NavItem from "../NavItem"
-import './styles.css'
+import clsx from 'clsx'
 
 const MENU_LIST = [
   { text: "Home", href: "/" },
-  { text: "About Us", href: "/about" },
-  { text: "Contact", href: "/contact" },
+  { text: "Users", href: "/users" }
 ]
 const Navbar = () => {
-  const [navActive, setNavActive] = useState(false)
+  const [navActive, setNavActive] = useState(true)
   const [activeIdx, setActiveIdx] = useState(-1)
 
   return (
-    <nav className='flex flex-col h-[100%]'>
-      <Link href={"/"}>
-        Logo here
-      </Link>
-      <div className={`${navActive ? "active" : ""} nav__menu-list`}>
+    <nav className={clsx(navActive ? 'w-[250px]' : 'w-[100px]') + ' flex flex-col h-[100%] p-8 z-20'}>
+      <header className="flex gap-10">
+        <Link href={"/"}>
+          Logo here
+        </Link>
+        <button onClick={() => setNavActive(!navActive)}>
+          mini
+        </button>
+      </header>
+      <div>
         {MENU_LIST.map((menu, idx) => (
           <div
+            className={clsx(`${activeIdx ===idx ? "text-link-text-active" : ""}`)}
             onClick={() => {
               setActiveIdx(idx)
               setNavActive(false)

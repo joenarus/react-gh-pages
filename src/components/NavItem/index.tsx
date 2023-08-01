@@ -9,9 +9,11 @@ type Props = {
 
 const NavItem: FC<Props> = ({ active, href, text }) => {
   return (
-    <Link href={href}>
-      {text}
-    </Link>
+    <div className="w-[100px]">
+      <Link href={href}>
+        {text}
+      </Link>
+    </div>
   )
 }
 export default NavItem

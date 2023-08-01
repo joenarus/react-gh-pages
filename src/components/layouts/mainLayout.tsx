@@ -8,9 +8,9 @@ const fetcher = (url:string) => fetch(url).then(res => res.json());
 
 const MainLayout: FC<PropsWithChildren> = ({ children }) => {
   return (
-    <div className='flex h-[100%] justify-space-between'>
+    <div className='flex h-[100%]'>
       <Navbar />
-      <main>{children}</main>
+      <main className='p-8'>{children}</main>
     </div>
   )
 }
