@@ -27,7 +27,6 @@ const Navbar = () => {
             className={clsx(`${activeIdx ===idx ? "text-link-text-active" : ""}`)}
             onClick={() => {
               setActiveIdx(idx)
-              setNavActive(false)
             }}
             key={menu.text}
           >
