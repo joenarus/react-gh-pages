@@ -1,5 +1,10 @@
 import useSWR from 'swr'
  
+type User = {
+  id: string
+  firstname: string
+  lastname: string
+}
 
 const Users = () => {
     const { data, error, isLoading } = useSWR(`
@@ -16,7 +21,7 @@ const Users = () => {
           <div> Loading </div>
         ) : (
           <div>
-            {data?.users.map((user) => {
+            {data?.users?.map((user: User) => {
               return (
                 <div key={user.id}>{user.firstname} {user.lastname}</div>
               )
