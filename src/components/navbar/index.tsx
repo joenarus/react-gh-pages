@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { useRouter } from 'next/router'
 import React, { useState } from "react"
 import NavItem from "../NavItem"
 import clsx from 'clsx'
@@ -8,8 +9,9 @@ const MENU_LIST = [
   { text: "Users", href: "/users" }
 ]
 const Navbar = () => {
+  const router = useRouter()
   const [navActive, setNavActive] = useState(true)
-  const [activeIdx, setActiveIdx] = useState(-1)
+  const activePath = router.asPath
 
   return (
     <nav className={clsx(navActive ? 'w-[250px]' : 'w-[100px]') + ' flex flex-col h-[100%] p-8 z-20'}>
@@ -23,15 +25,7 @@ const Navbar = () => {
       </header>
       <div>
         {MENU_LIST.map((menu, idx) => (
-          <div
-            className={clsx(`${activeIdx ===idx ? "text-link-text-active" : ""}`)}
-            onClick={() => {
-              setActiveIdx(idx)
-            }}
-            key={menu.text}
-          >
-            <NavItem active={activeIdx === idx} {...menu} />
-          </div>
+          <NavItem key={menu.text} active={activePath === menu.href} {...menu} />
         ))}
       </div>
     </nav>

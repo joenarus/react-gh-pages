@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { FC } from "react"
+import clsx from 'clsx'
 
 type Props = {
   text: string,
@@ -9,7 +10,7 @@ type Props = {
 
 const NavItem: FC<Props> = ({ active, href, text }) => {
   return (
-    <div className="w-[100px]">
+    <div className={clsx(`${active ? "text-link-text-active" : ""}`) + " w-[100px] h-[64px] flex items-center p-3"}>
       <Link href={href}>
         {text}
       </Link>
